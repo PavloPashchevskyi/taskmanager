@@ -1,10 +1,6 @@
 ## Example Laravel API
 
- This is a sample project to show how you could write an API using Laravel 5. You can follow the tutorial online at https://www.toptal.com/laravel/restful-laravel-api-tutorial
-
- There will be some minor differences, specially regarding downloaded packages, as I used the
- excellent [Laravel Ide Helper](https://github.com/barryvdh/laravel-ide-helper) to setup
- PhpStorm bindings and other features.
+ This is a test project project for Itransition company, which is an API using Laravel 5.
 
 ## Running the API
 
@@ -25,3 +21,7 @@ Then install, migrate, seed, all that jazz:
 4. `php artisan serve`
 
 The API will be running on `localhost:8000`.
+
+To send a test email to remind about task (configure your mail server in `.env` file before this) use
+
+ `php artisan reminder:email`

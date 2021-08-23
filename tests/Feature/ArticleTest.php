@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Article;
+use App\Task;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -31,8 +31,8 @@ class ArticleTest extends TestCase
         $user = factory(User::class)->create();
         $token = $user->generateToken();
         $headers = ['Authorization' => "Bearer $token"];
-        $article = factory(Article::class)->create([
-            'title' => 'First Article',
+        $article = factory(Task::class)->create([
+            'title' => 'First Task',
             'body' => 'First Body',
         ]);
 
@@ -51,8 +51,8 @@ class ArticleTest extends TestCase
         $user = factory(User::class)->create();
         $token = $user->generateToken();
         $headers = ['Authorization' => "Bearer $token"];
-        $article = factory(Article::class)->create([
-            'title' => 'First Article',
+        $article = factory(Task::class)->create([
+            'title' => 'First Task',
             'body' => 'First Body',
         ]);
 
@@ -62,13 +62,13 @@ class ArticleTest extends TestCase
 
     public function testArticlesAreListedCorrectly()
     {
-        factory(Article::class)->create([
-            'title' => 'First Article',
+        factory(Task::class)->create([
+            'title' => 'First Task',
             'body' => 'First Body'
         ]);
 
-        factory(Article::class)->create([
-            'title' => 'Second Article',
+        factory(Task::class)->create([
+            'title' => 'Second Task',
             'body' => 'Second Body'
         ]);
 
@@ -79,8 +79,8 @@ class ArticleTest extends TestCase
         $response = $this->json('GET', '/api/articles', [], $headers)
             ->assertStatus(200)
             ->assertJson([
-                [ 'title' => 'First Article', 'body' => 'First Body' ],
-                [ 'title' => 'Second Article', 'body' => 'Second Body' ]
+                [ 'title' => 'First Task', 'body' => 'First Body' ],
+                [ 'title' => 'Second Task', 'body' => 'Second Body' ]
             ])
             ->assertJsonStructure([
                 '*' => ['id', 'body', 'title', 'created_at', 'updated_at'],
@@ -89,7 +89,7 @@ class ArticleTest extends TestCase
 
     public function testUserCantAccessArticlesWithWrongToken()
     {
-        factory(Article::class)->create();
+        factory(Task::class)->create();
         $user = factory(User::class)->create([ 'email' => 'user@test.com' ]);
         $token = $user->generateToken();
         $headers = ['Authorization' => "Bearer $token"];
@@ -100,7 +100,7 @@ class ArticleTest extends TestCase
 
     public function testUserCantAccessArticlesWithoutToken()
     {
-        factory(Article::class)->create();
+        factory(Task::class)->create();
 
         $this->json('get', '/api/articles')->assertStatus(401);
     }

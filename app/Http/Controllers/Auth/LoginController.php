@@ -52,9 +52,11 @@ class LoginController extends Controller
         if ($user) {
             $user->api_token = null;
             $user->save();
+
+            return response()->json([ 'data' => 'User logged out.' ], 200);
         }
 
-        return response()->json([ 'data' => 'User logged out.' ], 200);
+        return response()->json(['error' => 'Unauthenticated.'], 401);
     }
 
     protected function sendFailedLoginResponse(Request $request)

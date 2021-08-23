@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Article;
+use App\Task;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
