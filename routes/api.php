@@ -19,12 +19,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout');
-Route::post('register', 'Auth\RegisterController@register');
 
 Route::group(['middleware' => 'auth:api'], function() {
-    Route::get('articles', 'ArticleController@index');
-    Route::get('articles/{article}', 'ArticleController@show');
-    Route::post('articles', 'ArticleController@store');
-    Route::put('articles/{article}', 'ArticleController@update');
-    Route::delete('articles/{article}', 'ArticleController@delete');
+    Route::get('tasks', 'TaskController@index');
+    Route::get('tasks/{task}', 'TaskController@show');
+    Route::post('tasks', 'TaskController@store');
+    Route::put('tasks/{task}', 'TaskController@update');
+    Route::patch('tasks/{task}', 'TaskController@complete');
+    Route::delete('tasks/{task}', 'TaskController@delete');
 });

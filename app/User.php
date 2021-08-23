@@ -34,4 +34,14 @@ class User extends Authenticatable
 
         return $this->api_token;
     }
+
+    public function tasksCreated()
+    {
+        return $this->hasMany(Task::class);
+    }
+
+    public function tasksEntrusted()
+    {
+        return $this->hasMany(Task::class);
+    }
 }
