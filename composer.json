@@ -1,7 +1,15 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "itransition/itransition-laravel-testtask",
+    "description": "The testtask for Itransition company with Laravel framework.",
+    "keywords": ["taskmanager","itransition", "testtask", "laravel"],
+    "version": "0.1.0",
+    "authors": [
+        {
+            "name": "Pavlo Pashchevskyi",
+            "email": "p.pashchevsky@itransition.com",
+            "role": "developer"
+        }
+    ],
     "license": "MIT",
     "type": "project",
     "require": {
